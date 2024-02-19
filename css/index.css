@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+   text-decoration: none;
+   font-family: 'Times New Roman', Times, serif;
+
+}
+header{
+   
+    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+    url("../images/bacg1.jpeg");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+ul{
+    float: right;
+    list-style-type: none;
+margin-top: 20px;
+}
+ul li{
+    display: inline-block;
+}
+ul li a{
+    text-decoration: none;
+    color: aliceblue;
+    padding: 5px 20px;
+    border: 1px solid white;
+    border-radius: 15px;
+    background-color: #B80000;
+    margin-right: 10px;
+ 
+    cursor: pointer;
+}
+ul li a:hover{
+    background-color: rgb(6, 6, 6);
+    color: aliceblue;
+    border: 2px solid white;
+}
+.logo img
+{
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+    
+}
+.main
+{
+    max-width: 500px;
+    margin: auto;
+}
+.title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.title h1{
+    cursor: pointer;
+    /* text-shadow: 2px 2px 2px rgb(14, 14, 14); */
+    font-size: 50px;
+    color: white
+    /* text-shadow: 2px 2px 2px rgb(14, 14, 14); */
+    
+}
+p{
+    text-align: center;
+    color: white;
+}
+.button{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin-top: 30px;
+
+}
+.btn{
+    border: 2px solid white;
+    border-radius: 20px;
+    color: rgb(212, 223, 232);
+    padding: 10px 20px;
+    margin: 15px;
+    text-decoration: none;
+    background-color: #B80000;
+   
+  
+}
+.btn:hover{
+    background-color: rgb(15, 15, 15);
+    color: aliceblue;
+    border: 2px solid white;
+}
+.dropbtn {
+    text-decoration: none;
+    color: aliceblue;
+    padding: 5px 20px;
+    border: 1px solid white;
+    border-radius: 15px;
+    background-color: #B80000;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+margin-top: 2px;
+    background-color: #B80000;
+    /* min-width: 160px; */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: white;
+    padding: 10px;
+
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color:rgb(6, 6, 6);
+    border: 1px solid black;
+}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: none;
+}
+
+
+
+
+
+
+
+
+ 

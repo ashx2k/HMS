@@ -1,0 +1,90 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+body{
+   
+   
+        background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+        url("../images/bacg1.jpeg");
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    
+}
+.logo img
+{
+  
+    width: 100px;
+    height: auto;
+    margin-top: 20px;
+    margin: 15px;
+}
+.contain{
+    width: 300px;
+    height: 450px;
+    background-color: rgb(21, 21, 21);
+    
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.contain .text{
+    position: relative;
+    top: 7%;
+}
+.inp1{
+    border: none;
+    background-color: black;
+    border-bottom: 2px solid white;
+    width: 250px;
+    font-size: 20px;
+    margin-top: 40px;
+    outline: none;
+    color: white;
+}
+.inp2{
+    border: none;
+    background-color: black;
+    border-bottom: 2px solid white;
+    width: 250px;
+    font-size: 20px;
+    margin-top: 40px;
+    outline: none;
+    color: white;
+}
+.text button{
+    width: 220px;
+    height: 40px;
+    background-color: aqua;
+    color: black;
+    border-radius: 25px;
+    font-size: 22px;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.contain h1{
+    font-size: 36px;
+    color: aqua;
+    cursor: default;
+}
+button:hover{
+    border: 3px solid aqua;
+    color: white;
+    font-size: 24px;
+    background-color: rgb(15, 14, 14);
+}
+p{
+    margin-top: 30px;
+    font-size: 20px;
+    cursor: default;
+}
+p span{
+    color: aqua;
+    cursor: pointer;
+}
