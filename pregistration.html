@@ -13,13 +13,13 @@
         </div>
     <div class="container">
         <h1 class="FormTitle">Patient Registration</h1>
-        <form action="#"></form>
+        <form action="p_reg_autn.php" method="post">
         <div class="main-user-info">
             <div class="user-input-box">
                 <label for="FullName">Full Name</label>
                 <input type="text"
                 id="FullName"
-                name="FullName"
+                name="pFullName"
                 placeholder="Enter Full Name">
 
             </div>
@@ -27,7 +27,7 @@
                 <label for="UserName">User Name</label>
                 <input type="text"
                 id="UserName"
-                name="UserName"
+                name="pUserName"
                 placeholder="Enter User Name">
 
             </div>
@@ -35,7 +35,7 @@
                 <label for="E-MAil">E-Mail</label>
                 <input type="email"
                 id="E-MAil"
-                name="E-MAil"
+                name="p_email"
                 placeholder="Email">
 
             </div>
@@ -43,7 +43,7 @@
                 <label for="PhoneNumber">Phone Number</label>
                 <input type="text"
                 id="PhoneNumber"
-                name="PhoneNumber"
+                name="p_PhoneNumber"
                 placeholder="Enter Phone Number">
 
             </div>
@@ -51,7 +51,7 @@
                 <label for="Password">Password</label>
                 <input type="password"
                 id="Password"
-                name="Password"
+                name="p_Password"
                 placeholder="Enter Password">
 
             </div>
@@ -59,28 +59,42 @@
                 <label for="ConfirmPassword">Confirm Password</label>
                 <input type="password"
                 id="ConfirmPassword"
-                name="ConfirmPassword"
+                name="p_ConfirmPassword"
                 placeholder="Confirm Password">
 
             </div>
-        </div>
-        <div class="gender-details-box">
-            <span class="gender-title"> Gender</span>
-            <div class="gender-category">
-                <input type="radio" name="Gender" id="Male">
-                <label for="Male">Male</label>
-                <input type="radio" name="Gender" id="Female">
-                <label for="Female">Female</label>
-                <input type="radio" name="Gender" id="Other">
-                <label for="Other">Other</label>
+            <div class="user-input-box">
+                <label for="age">age</label>
+                <input type="number"
+                id="age"
+                name="p_age"
+                placeholder="age">
+    
+            </div>
+            <div class="gender-details-box">
+                <span class="gender-title"> Gender</span>
+                <div class="gender-category">
+                    <input type="radio" name="pGender" id="Male" value="male">
+                    <label for="Male">Male</label>
+                    <input type="radio" name="pGender" id="Female" value="Female">
+                    <label for="Female">Female</label>
+                    <input type="radio" name="pGender" id="Other" value="other">
+                    <label for="Other">Other</label>
+                </div>
             </div>
         </div>
+     
+       
+
         <div class="Form-submit-btn">
-            <input type="submit" value="Register">
+            <input type="submit" value="Register" name="p_register">
         </div>
     </div>
+</form>
     
 
     
 </body>
 </html>
+
+

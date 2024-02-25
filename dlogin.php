@@ -1,45 +1,3 @@
-
-<?php
-include 'connection.php';
-
-$errors = array();
-
-if (isset($_POST['loginbtn'])) {
-    $username = mysqli_real_escape_string($connection, $_POST['username']);
-    $password = mysqli_real_escape_string($connection, $_POST['password']);
-
-    if (empty($username)) {
-        array_push($errors, "Username is required");
-    }
-    if (empty($password)) {
-        array_push($errors, "Password is required");
-    }
-
-    if (count($errors) == 0) {
-        // Use a more secure password hashing method (e.g., bcrypt)
-        $password = password_hash($password, PASSWORD_BCRYPT);
-
-        $query = "SELECT * FROM d_register WHERE username='$username' and password='$password'";
-        $results = mysqli_query($connection, $query);
-
-        if ($row = mysqli_fetch_assoc($results)) {
-            if (password_verify($password, $row['password'])) {
-                session_start();
-                $_SESSION['username'] = $username;
-                $_SESSION['success'] = "You are now logged in";
-                header('location:d_dashboard.php');
-                exit();  // Always exit after a header redirect
-            } else {
-                array_push($errors, "Wrong username/password combination");
-            }
-        } else {
-            array_push($errors, "User not found");
-        }
-    }
-}
-?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,15 +16,14 @@ if (isset($_POST['loginbtn'])) {
         <div class="contain">
             <div class="text">
                 <h1> Doctor Login</h1>
-                <form action="dlogin.php" method="post" >
-                <input class="inp1" type="text" placeholder="Enter UserName" name="username" >
-                <input class="inp2" type="password" placeholder="Enter password" name="password" >
+                <form action="d_log_auth.php" method="post" >
+                <input class="inp1" type="text" placeholder="Enter UserName" name="doc_username">
+                <input class="inp2" type="password" placeholder="Enter password" name="doc_password">
                 <P>Forget password ?</P>
-                <button type="submit" name="loginbtn" >Login</button>
+                <button type="submit" name="login_doctor" >Login</button>
                 </form>
-                <p> Doctor Register <span><a href="dregistration.php"> Sign Up</a></span></p>
+                <p> Doctor Register <span><a href="doc_register.php"> Sign Up</a></span></p>
                 <p>Not a Doctor ? <span><a href="index.html"> Go Back</a></span></p>
-
 
             </div>
 
@@ -77,18 +34,22 @@ if (isset($_POST['loginbtn'])) {
 
 
 
+
+
+
 <?php 
+
 // include 'connection.php';
 
 // $errors = array(); 
-
+// session_start(); 
 // if(isset($_POST['loginbtn'])) 
 // { 
-// $usr=@$_POST['name']; 
-// $pass=@$_POST['pass']; 
-// if ($usr=="docter" && $pass=="123") 
+// $usr=$_POST['username1']; 
+// $pass=$_POST['password1']; 
+// if ($usr=="doc" && $pass=="123") 
 //  { 
-//  session_start(); 
+
 //  $_SESSION['admin1']=$usr; 
 //  header("Location:d_dashboard.php"); 
 //  echo"loged in successfuly...."; 
@@ -127,4 +88,47 @@ if (isset($_POST['loginbtn'])) {
 //   }
 
 
+?>
+
+
+
+
+<?php
+// include 'connection.php';
+
+// $errors = array();
+
+// if (isset($_POST['loginbtn'])) {
+//     $username = mysqli_real_escape_string($connection, $_POST['username']);
+//     $password = mysqli_real_escape_string($connection, $_POST['password']);
+
+//     if (empty($username)) {
+//         array_push($errors, "Username is required");
+//     }
+//     if (empty($password)) {
+//         array_push($errors, "Password is required");
+//     }
+
+//     if (count($errors) == 0) {
+       
+//         $password = password_hash($password, PASSWORD_BCRYPT);
+
+//         $query = "SELECT * FROM d_register WHERE username='$username' and password='$password'";
+//         $results = mysqli_query($connection, $query);
+
+//         if ($row = mysqli_fetch_assoc($results)) {
+//             if (password_verify($password, $row['password'])) {
+//                 session_start();
+//                 $_SESSION['username'] = $username;
+//                 $_SESSION['success'] = "You are now logged in";
+//                 header('location:d_dashboard.php');
+//                 exit();  
+//             } else {
+//                 array_push($errors, "Wrong username/password combination");
+//             }
+//         } else {
+//             array_push($errors, "User not found");
+//         }
+//     }
+// }
 ?>

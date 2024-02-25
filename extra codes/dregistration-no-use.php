@@ -1,6 +1,4 @@
 
-
-
 <?php
 include 'connection.php';
 
@@ -16,7 +14,21 @@ if (isset($_POST['submit'])) {
     $Gender = $_POST['gender'];
     $Specilization = $_POST['Specilization'];
 
-    // Validation
+
+    $check_query = "SELECT * FROM d_register WHERE Username='$UserName' OR Email='$email' LIMIT 1";
+    $result = mysqli_query($connection, $check_query);
+    $user = mysqli_fetch_assoc($result);
+
+    if ($user) {
+        if ($user['Username'] === $UserName) {
+            array_push($errors, "Username already exists");
+        }
+
+        if ($user['Email'] === $email) {
+            array_push($errors, "Email already exists");
+        }
+    }
+ 
     if (empty($Fullname)) {
         array_push($errors, "Full Name is required");
     }
@@ -35,32 +47,32 @@ if (isset($_POST['submit'])) {
         array_push($errors, "Password is required");
     }
     if ($Password != $ConfirmPassword) {
-        array_push($errors, "Passwords do not match");
+        array_push($errors, "Passwords do not match");  
+    }
+    if (empty($Gender)) {
+        array_push($errors, "Gender is required");
+    }
+    if (empty($Specilization)) {
+        array_push($errors, "Specializaerrion is required");
     }
 
-    // If there are no errors, proceed with the insertion
+
     if (count($errors) == 0) {
-        $password = password_hash($Password, PASSWORD_BCRYPT);
-        $ConfirmPassword = password_hash($ConfirmPassword, PASSWORD_BCRYPT);
+     
 
         $sql = "INSERT INTO d_register (Fullname, Username, Email, Phonenumber, Password, Confirmpassword, gender, Specilization) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        
-        $stmt = mysqli_prepare($connection, $sql);
-        mysqli_stmt_bind_param($stmt, "ssssssss", $Fullname, $UserName, $email, $PhoneNumber, $password, $ConfirmPassword, $Gender, $Specilization);
+         VALUES ('$Fullname','$UserName','$email','$PhoneNumber','$Password','$ConfirmPassword','$Gender','$Specilization')" ;
 
-        $result = mysqli_stmt_execute($stmt);
-
-        if ($result) {
-            header('location:d_log_temp.php');
-            exit();  // Always exit after a header redirect
+        if (mysqli_query($connection, $sql)) 
+        {
+            header('location:dlogin.php');
+            exit();
         } else {
             echo die("Data not inserted: " . mysqli_error($connection));
         }
     }
 }
 ?>
-
 
 
 <!DOCTYPE html>
@@ -170,40 +182,3 @@ function myFunction() {
     
 </body>
 </html>
-
-
-
-
-
-
-
-
-<?php
-    // include 'connection.php';
-    // //inserting data inside table.
-
-    // if(isset($_POST['submit'])){
-    //     // echo "Success";
-    //     $Fullname=$_POST['FullName'];
-    //     $UserName=$_POST['UserName'];
-    //     $email=$_POST['Email'];
-    //     $PhoneNumber=$_POST['PhoneNumber'];
-    //     $Password=$_POST['Password'];
-    //     $ConfirmPassword=$_POST['Confirmpassword'];
-    //     $Gender=$_POST['gender'];
-    //     $Specilization=$_POST['Specilization'];
-
-    //     //insert query.
-    //     $sql="INSERT INTO d_register(id,Fullname,Username,Email,Phonenumber, Password ,Confirmpassword,gender,Specilization) 
-        // VALUES ('','$Fullname','$UserName','$email','$PhoneNumber','$Password','$ConfirmPassword','$Gender','$Specilization')" ;
-        
-    //     $result=mysqli_query($connection,$sql);
-    //     if($result){
-    //        header('location:dlogin.php');
-    
-    //     }else{
-    //         echo die("Data not inserted");
-    //     }
-
-    // }
-?>

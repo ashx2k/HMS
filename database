@@ -1,0 +1,55 @@
+step 1 
+
+create database 
+
+create database hospital;
+
+step 2 
+
+create all the table required for the project below
+
+
+doctor registration TABLE
+
+CREATE TABLE d_register (
+    ID int AUTO_INCREMENT PRIMARY KEY,
+    FullName varchar(255),
+    UserName varchar(255),
+    Email varchar(255),
+    PhoneNumber varchar(255),
+    Password varchar(255),
+    Confirmpassword varchar(255),
+    gender ENUM('male','female','other'),
+    Specilization varchar(255)
+);
+
+
+admin registration TABLE
+
+
+CREATE TABLE admin_register (
+    ID int AUTO_INCREMENT PRIMARY KEY,
+    admin_FullName varchar(255),
+    admin_UserName varchar(255),
+    admin_Email varchar(255),
+    admin_PhoneNumber varchar(255),
+    admin_Password varchar(255),
+    admin_Confirmpassword varchar(255),
+    admin_gender ENUM('male','female','other')
+);
+
+P registration TABLE
+
+
+CREATE TABLE p_register (
+    ID int AUTO_INCREMENT PRIMARY KEY,
+    p_FullName varchar(255),
+    p_UserName varchar(255),
+    p_Email varchar(255),
+    p_PhoneNumber varchar(255),
+    p_Password varchar(255),
+    p_Confirmpassword varchar(255),
+    p_age int (255  ),
+    p_gender ENUM('male','female','other')
+);
+

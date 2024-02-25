@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar-sticky {
+    padding-top: 20px;
+    color: #fff;
+}
+
+.main {
+    margin-left: 240px;
+    padding: 20px;
+}
+
+.nav-link {
+    color: #fff !important;
+}
+
+.nav-link.active {
+    font-weight: bold;
+}
+.image{
+    background-image: url("images/11.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
