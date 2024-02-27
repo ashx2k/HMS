@@ -41,10 +41,10 @@ if(isset($_POST['p_login'])){
 
         if($p_uname === $storeduser && $p_pass === $storedPassword) {
             $_SESSION['p_UserName'] = $p_uname;
-            $_SESSION['success'] = "You are now logged in";
+            // $_SESSION['success'] = "You are now logged in";
             // Use ob_start() and ob_end_flush() for proper header redirection
             ob_start();
-            header('location: p_dashborad.html');
+            header('location: p_dashborad.php');
             ob_end_flush();
             exit(); 
         } else {

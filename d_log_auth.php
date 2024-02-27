@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 error_reporting(0);
 $errors = [];
 include 'connection.php';
@@ -28,7 +29,7 @@ if (isset($_POST['login_doctor'])) {
             if ($username === $storeduser && $password === $storedPassword) {
 
                 $_SESSION['username'] = $username;
-                $_SESSION['success'] = "You are now logged in";
+                // $_SESSION['success'] = "You are now logged in";
                 header('location: d_dashboard.php');
                 exit();
 

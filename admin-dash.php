@@ -1,3 +1,15 @@
+<?php
+session_start();
+echo "WELCOME ".$_SESSION['UserName'];
+$for_admin_sesson = $_SESSION['UserName'];
+if($for_admin_sesson == true)
+{ }
+else
+{
+header ('location:admin.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +29,14 @@
                 <div class="sidebar-sticky">
                     <h3 class="text-white py-4 text-center">Hospital Admin</h3>
                     <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link" href="#">UserName <?php echo "".$_SESSION['UserName'];?></a></li>
                         <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="dashboad.html">Patients</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Appointments</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Staff</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                       
                         
                     </ul>
@@ -36,6 +49,7 @@
                 <div class="pt-3">
                     <h2>Welcome to the Hospital Management Admin Panel</h2>
                     <p>Select an option from the navigation menu.</p>
+
                 </div>
             </main>
             <!-- /Content -->

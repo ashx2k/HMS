@@ -53,3 +53,11 @@ CREATE TABLE p_register (
     p_gender ENUM('male','female','other')
 );
 
+
+CREATE TABLE emergency (
+    e_ID int AUTO_INCREMENT PRIMARY KEY,
+    e_FullName varchar(255),  
+    e_Number int (255),
+    e_type varchar(255),
+    e_detail varchar(255)   
+);

@@ -59,9 +59,9 @@ if (isset($_POST['login_admin'])) {
 
             if ($ausername === $storeduser && $apassword === $storedPassword) {
 
-                $_SESSION['admin_UserName'] = $ausername;
-                $_SESSION['success'] = "You are now logged in";
-                header('location: admin-dash.html');
+                $_SESSION['UserName'] = $ausername;
+                // $_SESSION['success'] = "You are now logged in";
+                header('location: admin-dash.php');
                 exit();
 
             } else {

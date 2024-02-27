@@ -1,3 +1,15 @@
+<?php
+$session_start();
+$for_p_session = $_SESSION['p_UserName'];
+if($for_p_session == true)
+{ }
+else
+{
+header ('location:plogin.php');
+}
+?>
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,5 +19,6 @@
 </head>
 <body>
     <h1> p_dashborard</h1>
+    <a href="logout.php">logout</a>
 </body>
 </html>
