@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.container-1{
+    display: grid;
+    height:100vh;
+    grid-template-columns: 0.6fr 1fr 1fr 1fr 0.7fr;
+    grid-template-rows:0.2fr 1.5fr 1.2fr 0.3fr;
+    grid-template-areas:
+    "nav nav nav nav nav"
+    "sidebar main main main sidebar-2"
+    "sidebar content1 content1 content1 sidebar-2"
+    "sidebar footer footer footer sidebar-2";
+    grid-gap:0.2rem;
+    }
+    
+    nav{
+        background: red;
+        grid-area: nav;
+       
+    
+    }
+    main{
+        background: white;
+        grid-area:main;
+        display: flex;
+        
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    #sidebar{
+        background: black;
+        grid-area:sidebar;
+       
+    
+    }
+    .sidebar-2{
+        background:white;
+        grid-area:sidebar-2;
+       
+    
+    }
+    #content1{
+        /* background: rgb(153, 19, 242); */
+        grid-area: content1;
+    }
+    /* #content2{
+        background:green;
+        grid-area:content2;
+    }
+    #content3{
+        background: lightgray;
+        grid-area: content3;
+    } */
+    footer {
+        background: rgb(179, 255, 255);
+        grid-area:footer;
+        
+
+    }
+
+   
+
+
+    
+    @media only screen and (max-width:720px){
+
+        .container-1{
+            grid-template-columns: 1fr;
+            grid-template-rows:0.4fr 0.4fr 2.2fr 3.6fr 1fr 0.3fr;
+            grid-template-areas: 
+            "nav"
+            "sidebar"
+            "main"
+            "content1"
+            /* "content2" */
+            "sidebar-2" 
+            "footer";     
+        }
+    
+    }
+
+
+
+
+
+#sidebar .brand-name{
+    color:white;
+    font: bold;
+    font-size: 11px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    
+    }
+
+
+    #sidebar li{
+        margin: 20px;
+        margin-left: 10px;
+        justify-content: space-between;
+        text-decoration: none;
+    }
+
+    #sidebar ul li a{
+        text-decoration: none;
+        color:white;
+        font-size: large;
+        margin-left: 0px;
+        font: bold;
+        
+        }
+
+ #sidebar li a:hover
+{
+    color:red;
+} 
+
+
+ ul{
+    list-style-type: none;
+ }
+
+.sidebar-2 .emerg{
+    overflow:hidden;
+    overflow-y:scroll;
+}
+.sidebar-2 .emerg .card-header{
+    font-size: 20px;
+    border:2px solid black;
+    border-radius: 4%;
+}
+
+.end{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.end .bi-twitter{
+    font-size: 40px;
+}
+ 
+
+.end .bi-instagram{
+    font-size: 40px;
+    color:red;
+}
+
+.end .bi-facebook{
+    font-size: 40px;
+}

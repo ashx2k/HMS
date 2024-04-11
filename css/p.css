@@ -57,7 +57,7 @@ body{
     outline: none;
     color: white;
 }
-.text button{
+.text   button{
     width: 220px;
     height: 40px;
     background-color: aqua;
@@ -65,7 +65,7 @@ body{
     border-radius: 25px;
     font-size: 22px;
     border: none;
-    margin-top: 20px;
+    margin-top: 8px;
     cursor: pointer;
 }
 .contain h1{

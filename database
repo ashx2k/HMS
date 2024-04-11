@@ -20,7 +20,8 @@ CREATE TABLE d_register (
     Password varchar(255),
     Confirmpassword varchar(255),
     gender ENUM('male','female','other'),
-    Specilization varchar(255)
+    Specilization varchar(255),
+    appointment-charge int(10)
 );
 
 
@@ -59,5 +60,118 @@ CREATE TABLE emergency (
     e_FullName varchar(255),  
     e_Number int (255),
     e_type varchar(255),
-    e_detail varchar(255)   
+    e_detail varchar(255),
+    request_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP   
+);
+
+
+CREATE TABLE appointment_booking (
+    app_ID int AUTO_INCREMENT PRIMARY KEY,
+    app_d_id varchar(255),
+    app_d_name varchar(255),
+    app_p_name varchar (255),
+    app_p_real_name int (255),
+    app_date varchar(255),
+    app_time varchar(255),
+    charges  int(255) 
+);
+
+
+CREATE TABLE doctors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    doc_id int(255),
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    mobile_number VARCHAR(20),
+    address_line_1 VARCHAR(100),
+    address_line_2 VARCHAR(100),
+    postcode VARCHAR(20),
+    state VARCHAR(50),
+    area VARCHAR(50),
+    email VARCHAR(100),
+    education VARCHAR(100),
+    country VARCHAR(50),
+    state_region VARCHAR(50),
+    experience_in VARCHAR(100),
+    additional_details TEXT
+);
+
+
+CREATE TABLE d_register (
+    ID int AUTO_INCREMENT PRIMARY KEY,
+    FullName varchar(255),
+    UserName varchar(255),
+    Email varchar(255),
+    PhoneNumber varchar(255),
+    Password varchar(255),
+    Confirmpassword varchar(255),
+    gender ENUM('male','female','other'),
+    Specilization varchar(255),
+    appointment-charge int(10),
+
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+
+    address_line_1 VARCHAR(100),
+    address_line_2 VARCHAR(100),
+    postcode VARCHAR(20),
+    state VARCHAR(50),
+    area VARCHAR(50),
+
+    education VARCHAR(100),
+    country VARCHAR(50),
+    state_region VARCHAR(50),
+    experience_in VARCHAR(100),
+    additional_details TEXT
+);
+
+
+
+CREATE TABLE prescriptions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    app_id INT,
+    app_d_id INT,
+    medicine_name VARCHAR(255),
+    dosage VARCHAR(255),
+    morning TINYINT(1) DEFAULT 0,
+    afternoon TINYINT(1) DEFAULT 0,
+    evening TINYINT(1) DEFAULT 0,
+    night TINYINT(1) DEFAULT 0,
+    days INT,
+    note TEXT,
+    charges varchar(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE contact_messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE  p_image (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image_data LONGBLOB,
+    u_name VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE  d_image (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image_data LONGBLOB,
+    d_name VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+   
+CREATE TABLE report_upload (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    file_name VARCHAR(255) NOT NULL,
+    file_type VARCHAR(100) NOT NULL,
+    file_size INT NOT NULL,
+    file_content LONGBLOB NOT NULL,
+    p_id VARCHAR(100) NOT NULL,
+    upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

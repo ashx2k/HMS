@@ -54,7 +54,6 @@
             <div class="gender-category">
                 <!-- <input type="radio" name="aGender" id="Male"> -->
                 <input type="radio" name="a_gender" id="Male" value="male">
-
                 <label for="Male">Male</label>
                 <!-- <input type="radio" name="aGender" id="Female"> -->
                 <input type="radio" name="a_gender" id="Female" value="female">
@@ -91,11 +90,11 @@ if (isset($_POST['admin_reg'])){
   $a_password=$_POST['aPassword'];
   $a_cpassword=$_POST['aConfirmPassword'];
   $a_gender=$_POST['a_gender'];
-// if (isset($_POST['a_gender'])) {
-//     $a_gender = $_POST['a_gender'];
-// } else {
-//     array_push($error, "Gender is required");
-// }
+
+
+  $hashed_password = hash('sha256', $a_password);
+  $hashed_confirm_password = hash('sha256', $a_cpassword);
+
 
   $check_query = "SELECT * FROM admin_register WHERE admin_UserName='$a_uname' OR admin_Email='$a_email' LIMIT 1";
   $result = mysqli_query($connection, $check_query);
@@ -139,7 +138,7 @@ if (isset($_POST['admin_reg'])){
   if (count($error) == 0) {
 
     $sql = "INSERT INTO `admin_register` (`admin_FullName`, `admin_UserName`, `admin_Email`, `admin_PhoneNumber`, `admin_Password`, `admin_Confirmpassword`, `admin_gender`) 
-        VALUES ('$a_fname', '$a_uname', '$a_email', '$a_number', '$a_password', '$a_cpassword', '$a_gender')";
+        VALUES ('$a_fname', '$a_uname', '$a_email', '$a_number', '$hashed_password', ' $hashed_confirm_password', '$a_gender')";
 
 
     if (mysqli_query($connection, $sql)) {

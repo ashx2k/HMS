@@ -26,8 +26,11 @@ body {
 .nav-link.active {
     font-weight: bold;
 }
-.image{
+body .image{
     background-image: url("images/11.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    width: auto;
+    height: auto;
 }

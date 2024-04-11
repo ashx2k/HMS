@@ -1,0 +1,106 @@
+*{
+    padding: 0;
+    margin: 0;
+  }
+  
+  .container-1{
+    display:grid;
+    height:100vh;
+    grid-template-columns: 0.2fr 5fr ;
+    grid-template-rows: 0.1fr;
+    grid-template-areas: "nav nav"
+    "sidebar main";
+    grid-gap: 0.2rem;
+    
+  }
+  
+  .nav{
+    background: red;
+    grid-area: nav;
+    position: sticky;
+
+}
+  
+  .main{
+    /* background: blue; */
+    background-image:url('4.png');
+   background-size: cover;
+    background-repeat: no-repeat;
+    
+    grid-area:main;
+   
+   
+    
+  }
+  
+  .sidebar{
+    
+        background: black;
+        grid-area:sidebar;
+        position: sticky;
+       }
+
+
+  .sidebar .brand-name{
+    color:white;
+    font: bold;
+    font-size: 11px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    
+    }
+
+
+    .sidebar li{
+        margin: 20px;
+        margin-left: 10px;
+        justify-content: space-between;
+        text-decoration: none;
+    }
+
+    .sidebar ul li a{
+        text-decoration: none;
+        color:white;
+        font-size: large;
+        margin-left: 0px;
+        font: bold;
+        
+        }
+
+ .sidebar li a:hover
+{
+    color:red;
+} 
+
+
+ ul{
+    list-style-type: none;
+ }
+
+ /* .card{
+  margin-top: 10px;
+  margin-left: 155px;
+ }
+
+ .card .card-header{
+  font-size: larger;
+  font-weight: bold;
+ }
+  */
+
+
+  @media only screen and (max-width:720px){
+
+    .container-1{
+        grid-template-columns:1fr;
+        grid-template-rows:0.2fr 1fr 1fr;
+        grid-template-areas: 
+        "nav"
+        "sidebar"
+        "main"
+       ;     
+    }
+
+}

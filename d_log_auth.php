@@ -9,11 +9,19 @@ if (isset($_POST['login_doctor'])) {
     $username = mysqli_real_escape_string($connection, $_POST['doc_username']);
     $password = mysqli_real_escape_string($connection, $_POST['doc_password']);
 
+    $hashed_password = hash('sha256', $password);
+
     if (empty($username)) {
-        array_push($errors, "Username is required");
+        $_SESSION['msg'] = "Username is required";
+        exit();
+        // echo "<scrip>
+        // window.alert('Empty username'); window.location.href = 'dlogin.php';
+        // </script>";
     }
     if (empty($password)) {
-        array_push($errors, "Password is required");
+        $_SESSION['msg'] = "Password is required";
+        exit();
+        
     }
     if (count($errors) == 0) {
         $query = "SELECT  `Username`, `Password` FROM `d_register` WHERE Username='$username' ";
@@ -22,22 +30,28 @@ if (isset($_POST['login_doctor'])) {
 
         if ($results && mysqli_num_rows($results) == 1) {
             $row = mysqli_fetch_assoc($results);
-            // print_r($row);  this part is for the truble shhoting 
             $storeduser = $row['Username'];
             $storedPassword = $row['Password'];
 
-            if ($username === $storeduser && $password === $storedPassword) {
+            if ($username === $storeduser && $hashed_password === $storedPassword) {
 
                 $_SESSION['username'] = $username;
                 // $_SESSION['success'] = "You are now logged in";
                 header('location: d_dashboard.php');
+                echo "<script>
+                            window.alert('WELCOME DOCTOR'); 
+                    </script>";
                 exit();
 
             } else {
-                array_push($errors, "Wrong username/password combination");
+                $_SESSION['msg'] = "Wrong username/password combination";
+                header('location: dlogin.php');
+                exit();
             }
         } else {
-            array_push($errors, "Wrong username/password combination");
+            $_SESSION['msg'] = "Wrong username/password combination";
+            header('location: dlogin.php');
+            exit();
         }
     }
 }

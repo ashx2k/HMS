@@ -1,0 +1,128 @@
+<div class="container ">
+    <table class="table table-hover table-bordered border-primary">
+   <tr class="text-center">
+       <th>ID</th>
+       <th>Name</th>
+       <th>Age</th>
+       <th>Phone</th>
+       <th>Email</th>
+       <th>Reports</th>
+   </tr>
+   
+   <?php
+   include 'connection.php';
+   
+   $sql1 = "SELECT DISTINCT `app_p_name` FROM `appointment_booking_update` WHERE `app_d_name`='$for_doc_session' ";
+   $query1 = mysqli_query($connection, $sql1);
+   
+   
+   if(mysqli_num_rows($query1) > 0) {
+   
+       while($row = mysqli_fetch_assoc($query1)) {
+           $p_uname = $row['app_p_name'];
+    
+           $sql2 = "SELECT * FROM `p_register` WHERE `p_UserName`='$p_uname'";
+           $query2 = mysqli_query($connection, $sql2);
+   
+           if(mysqli_num_rows($query2) > 0) {
+   
+           while($p_data = mysqli_fetch_assoc($query2)) {
+       ?>
+   <tr>
+       <td><?php echo $p_data['ID'] ?></td>
+       <td><?php echo $p_data['p_FullName'] ?></td>
+       <td><?php echo $p_data['p_age'] ?></td>
+       <td><?php echo $p_data['p_PhoneNumber'] ?></td>
+       <td><?php echo $p_data['p_Email'] ?></td>
+       <td>
+   
+       <div class="text-center">
+       <a type="submit"  class="btn btn-primary align-self-center "  data-bs-toggle="modal" data-bs-target="#p_report">
+               <form action="#" method="post" id="view_report_form">
+                   <input type="hidden" name="p_id" value="<?php echo $p_data['p_UserName']; ?>">
+                   <button type="button" id="view_report_button" class="btn btn-primary align-self-center" onclick="submitFormAndTriggerModal()">View Report</button>
+               </form>
+               </a>
+   
+   
+               <div class="modal fade" id="p_report" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h1 class="modal-title fs-5" id="staticBackdropLabel">patient Reports</h1>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+   
+   
+         <table class="table table-responsive border-1  ">
+           <tr class="bg-danger text-center  ">
+               <th class="border-2  ">File Name</th>
+               <th class="border-2  ">Upload Date</th>
+               <th class="border-2  ">Action</th>
+           </tr>
+   
+           <?php
+           include 'connection.php';
+           if(isset($_POST['p_id'])) {
+           $p_id = $_POST['p_id'];
+           echo "hello",$p_id;
+           $rep = "SELECT * FROM `report_upload` WHERE `p_id`='$p_id'";
+           $query_rep = mysqli_query($connection, $rep);
+           while ($row_r = mysqli_fetch_assoc($query_rep))
+           {
+             ?>
+               <tr>
+               <td class="border-2   "><?php echo $row_r['file_name']?></td>
+               <td class="border-2   "><?php echo $row_r['upload_date'] ?></td>
+               <td class="border-2  text-center  "><a href="download1.php?id=<?php echo $row_r['p_id'] ?>" class="btn btn-primary align-self-center ">Download</a></td>
+               </tr>
+           <?php
+            }
+           }
+           ?>
+   
+   </table>
+   
+          
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+           <button type="button" class="btn btn-primary">Understood</button>
+         </div>
+       </div>
+     </div>
+   </div>
+   
+           </div>
+   
+   </td>
+   </tr>
+   
+   
+   <?php
+               }
+           } else {
+               echo "No patient data found for username: $p_uname <br>";
+           }
+       }
+   } else {
+       echo "<script>
+       window.alert('No Pation found for the doctor: $for_doc_session');
+       </script>";
+   }
+   
+   mysqli_close($connection);
+   ?>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    </table>
+   
+    </div>
