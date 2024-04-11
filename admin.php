@@ -33,6 +33,7 @@
 <?php
 session_start();
 error_reporting(0);
+// error_reporting(E_ALL);
 $errors = [];
 include 'connection.php';
 if (isset($_POST['login_admin'])) {
@@ -53,7 +54,7 @@ if (isset($_POST['login_admin'])) {
 
         if ($results && mysqli_num_rows($results) == 1) {
             $row = mysqli_fetch_assoc($results);
-            print_r($row);
+            // print_r($row);
             $storeduser = $row['admin_UserName'];
             $storedPassword = $row['admin_Password'];
 
